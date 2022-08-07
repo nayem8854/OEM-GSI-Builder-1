@@ -33,12 +33,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install python3.7
-          sudo apt purge -y python2.7-minimal
-          sudo ln -s /usr/bin/python3 /usr/bin/python
-          sudo apt install -y python3-pip
-          sudo ln -s /usr/bin/pip3 /usr/bin/pip
+          sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
+          sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 2
           python --version
-          sudo pip install protobuf==3.0.0
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
