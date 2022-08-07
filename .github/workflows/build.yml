@@ -33,6 +33,8 @@ jobs:
         run: |
           sudo apt update
           sudo apt install python3.7
+          git clone https://github.com/nsg-ethz/p4-utils.git
+          bash p4-utils/install.sh
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
