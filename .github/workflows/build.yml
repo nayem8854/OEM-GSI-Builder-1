@@ -31,7 +31,7 @@ jobs:
           required "${{ steps.config.outputs.output_type }}" "OUTPUT_TYPE config"
       - name: Python
         run: |
-          apt install python
+          bash apt-install python3
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
