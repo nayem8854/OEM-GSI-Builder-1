@@ -29,7 +29,7 @@ jobs:
           required "${{ steps.config.outputs.firmware_type }}" "FIRMWARE_TYPE config"
           required "${{ steps.config.outputs.sourceforge_dir }}" "SOURCEFORGE_DIR config"
           required "${{ steps.config.outputs.output_type }}" "OUTPUT_TYPE config"
-      - name: Setup ErfanGSIs Tools
+      - name: Python
         run: |
           apt install python
       - name: Setup ErfanGSIs Tools
