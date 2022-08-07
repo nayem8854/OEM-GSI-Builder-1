@@ -29,17 +29,7 @@ jobs:
           required "${{ steps.config.outputs.firmware_type }}" "FIRMWARE_TYPE config"
           required "${{ steps.config.outputs.sourceforge_dir }}" "SOURCEFORGE_DIR config"
           required "${{ steps.config.outputs.output_type }}" "OUTPUT_TYPE config"
-      - name: Python
-        run: |
-          sudo apt update
-          sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev curl software-properties-common
-          sudo apt purge -y python2.7-minimal
-          wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
-          sudo tar -xf Python-3.7.0.tar.xz
-          cd Python-3.7.0
-          sudo ./configure
-          sudo make altinstall
-          python3.7 --version
+
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
