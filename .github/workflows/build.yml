@@ -32,10 +32,14 @@ jobs:
       - name: Python
         run: |
           sudo apt update
-          sudo apt install -y python3.9
-          sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-          sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.9 2
-          python --version
+          sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev curl software-properties-common
+          sudo apt purge -y python2.7-minimal
+          wget https://www.python.org/ftp/python/3.7.0/Python-3.7.0.tar.xz
+          sudo tar -xf Python-3.7.0.tar.xz
+          cd Python-3.7.0
+          sudo ./configure
+          sudo make altinstall
+          python3.7 --version
       - name: Setup ErfanGSIs Tools
         run: |
           git clone --recurse-submodules "${{ steps.config.outputs.tool_repo }}"
